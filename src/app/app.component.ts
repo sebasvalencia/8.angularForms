@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ThrowStmt } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
+import { switchMap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,9 @@ export class AppComponent {
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
-    this.http.get(this.url).subscribe(console.log);
+    this.http.post(this.url, {name: 'sebas'} ).pipe(
+      switchMap(() => http.get(this.url))
+    ).subscribe(console.log);
 
 
     this.form = this.fb.group({
