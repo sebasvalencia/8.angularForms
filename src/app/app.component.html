@@ -7,7 +7,7 @@
   <input type="number" formControlName="age">
   <span class="danger" *ngIf="!form.get('age').pristine && !form.get('age').valid">This field is 5 max</span>
   <!-- <button type="submit" [disabled]="!form.disabled">SAVE</button> -->
-  <button type="submit" >SAVE</button>
+  <button type="submit" [disabled]="!form.valid" >SAVE</button>
 </form>
 
 
